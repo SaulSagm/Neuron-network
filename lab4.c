@@ -18,18 +18,21 @@ struct in
 int main(void){
     // Your code here!
     srand(time(NULL));
-    int dim,trainSet,testSet,trainEx;
+    int dim,trainSet,testSet;
     int a=0;
     int i=0,j=0,k=0,m=0,n=0,res;
     float weight[]={0.56,0.23,0.34,0.66,0.82,0.15,0.29,0.78,0.43,0.91},w[3];
     float net,actual[100],err,val;
     char str1[35];
-    char *pch1,*pch2;
+    char *pch1;
 
+    fflush(stdin);
     scanf("%i",&dim);
     //printf("%i\n",dim);
+    fflush(stdin);
     scanf("%i",&trainSet);
     //printf("%i\n",trainSet);
+    fflush(stdin);
     scanf("%i",&testSet);
     //printf("%i\n",testSet);
     
@@ -139,3 +142,4 @@ int main(void){
     
     return 0;
 }
+
