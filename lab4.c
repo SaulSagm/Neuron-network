@@ -42,7 +42,7 @@ int main(void){
         scanf("%s",&tSet[i].Set);
         //printf("%s\n",tSet[i].Set);
         tSet[i].bias=1;
-        pch1=strtok(tSet[i].Set,", "); //In this part the string is divided by spaces           
+        pch1=strtok(tSet[i].Set," ,"); //In this part the string is divided by spaces           
         while(pch1!=NULL)
         {
             if(a==0)
@@ -62,7 +62,7 @@ int main(void){
                         strcpy(str1,pch1);
                         tSet[i].out=atof(str1);
                     }
-            pch1=strtok(NULL,", ");
+            pch1=strtok(NULL," ,");
             a++;
         }
         a=0;
@@ -71,7 +71,7 @@ int main(void){
     
     while(scanf("%s",&data[k].Set)!=EOF)
     {
-        pch1=strtok(data[k].Set,", "); //In this part the string is divided by spaces           
+        pch1=strtok(data[k].Set," ,"); //In this part the string is divided by spaces           
         while(pch1!=NULL)
         {
             if(a==0)
@@ -85,7 +85,7 @@ int main(void){
                     strcpy(str1,pch1);
                     data[k].in2=atof(str1);
                 }
-            pch1=strtok(NULL,", ");
+            pch1=strtok(NULL," ,");
             a++;
         }
         a=0;
