@@ -20,10 +20,10 @@ int main(void){
     srand(time(NULL));
     int dim,trainSet,testSet;
     int a=0;
-    int i=0,j=0,k=0,m=0,n=0,res;
+    int i=0,j=0,k=0,m=0,n=0;
     float weight[]={0.56,0.23,0.34,0.66,0.82,0.15,0.29,0.78,0.43,0.91},w[3];
     float net,actual[100],err,val;
-    char str1[35];
+    char str1[35],res;
     char *pch1;
 
     fflush(stdin);
@@ -134,10 +134,10 @@ int main(void){
     {
         val=w[0]+w[1]*data[j].in1+w[2]*data[j].in2;
         if(val>=0)
-            res=1;
+            res='1';
         else
-            res=0;
-        printf("%i\n",res);
+            res='0';
+        printf("%c\n",res);
     }
     
     return 0;
