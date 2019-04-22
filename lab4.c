@@ -3,13 +3,13 @@
 #include <string.h>
 #include <time.h>
 
-struct train
-{
+struct train    //Structure for the training Set with its bias, two inputs and
+{               //the output desired
     char Set[75];
     float bias,x,y,out;
 }tSet[100];
 
-struct in
+struct in       //Structure with the testing input data.
 {
     char Set[75];
     float in1,in2;
@@ -17,34 +17,31 @@ struct in
 
 int main(void){
     // Your code here!
-    srand(time(NULL));
-    int dim,trainSet,testSet;
+    srand(time(NULL));  //Random initialization
+    int dim,trainSet,testSet;   //Input variables
     int a=0;
-    int i=0,j=0,k=0,m=0,n=0;
-    float weight[]={0.56,0.23,0.34,0.66,0.82,0.15,0.29,0.78,0.43,0.91},w[3];
-    float net,actual[100],err,val;
-    char str1[35],res;
+    int i=0,j=0,k=0,m=0,n=0,res;    //Counters
+    float weight[]={0.56,0.23,0.34,0.66,0.82,0.15,0.29,0.78,0.43,0.91},w[3];    //Weights
+    float net,actual[100],err,val;  //Variables for calculations
+    char str1[35];
     char *pch1;
 
-    fflush(stdin);
-    scanf("%i",&dim);
-    //printf("%i\n",dim);
+    fflush(stdin);      //Input variables for dimensionality, training Set
+    scanf("%i",&dim);   //and testing Set
     fflush(stdin);
     scanf("%i",&trainSet);
-    //printf("%i\n",trainSet);
     fflush(stdin);
     scanf("%i",&testSet);
-    //printf("%i\n",testSet);
-    
+
     fflush(stdin);
     while(i<trainSet)
     {
         scanf("%s",&tSet[i].Set);
         //printf("%s\n",tSet[i].Set);
         tSet[i].bias=1;
-        pch1=strtok(tSet[i].Set," ,"); //In this part the string is divided by spaces           
-        while(pch1!=NULL)
-        {
+        pch1=strtok(tSet[i].Set,", ");  //In this part the string is divided by            
+        while(pch1!=NULL)               //comas and spaces so each input and    
+        {                               //output is saved separately
             if(a==0)
             {
                 strcpy(str1,pch1);
@@ -62,18 +59,18 @@ int main(void){
                         strcpy(str1,pch1);
                         tSet[i].out=atof(str1);
                     }
-            pch1=strtok(NULL," ,");
+            pch1=strtok(NULL,", ");
             a++;
         }
         a=0;
         i++;
     }
     
-    while(scanf("%s",&data[k].Set)!=EOF)
+    while(scanf("%s",&data[k].Set)!=EOF)    
     {
-        pch1=strtok(data[k].Set," ,"); //In this part the string is divided by spaces           
-        while(pch1!=NULL)
-        {
+        pch1=strtok(data[k].Set,", ");  //In this part the string is divided by           
+        while(pch1!=NULL)               //comas and spaces so each input and
+        {                               //output is saved separately
             if(a==0)
             {
                 strcpy(str1,pch1);
@@ -85,34 +82,25 @@ int main(void){
                     strcpy(str1,pch1);
                     data[k].in2=atof(str1);
                 }
-            pch1=strtok(NULL," ,");
+            pch1=strtok(NULL,", ");
             a++;
         }
         a=0;
         k++;
     }
     
-    /*for(j=0;j<trainSet;j++)
-        printf("%.1f %.1f %.1f\n",tSet[j].x,tSet[j].y,tSet[j].out);
-    
-    for(j=0;j<k;j++)
-        printf("%.1f %.1f\n",data[j].in1,data[j].in2);*/
-    
     for(j=0;j<3;j++)
-        w[j]=weight[rand()%11];
-    
-    /*for(j=0;j<3;j++)
-        printf("%.2f\t",w[j]);*/
+        w[j]=weight[rand()%11]; //Initialize randomly the value of the weights
     
     net=0;
     err=0;
     
-    do
+    do  //Training function
     {
         n=0;
         for(m=0;m<trainSet;m++)
         {
-            net=net+w[0]*tSet[m].bias+w[1]*tSet[m].x+w[2]*tSet[m].y;
+            net=net+w[0]*tSet[m].bias+w[1]*tSet[m].x+w[2]*tSet[m].y;    //Sum
             
             if(net>=0)
                 actual[m]=1;
@@ -121,25 +109,27 @@ int main(void){
                 
             err=tSet[m].out-actual[m];
             
-            w[0]=w[0]+err*tSet[0].bias;
+            w[0]=w[0]+err*tSet[0].bias; //Correction of the weight
             w[1]=w[1]+err*tSet[1].x;
             w[2]=w[2]+err*tSet[2].y;
             
-            if(actual[m]==tSet[m].out)
-                n++;
+            if(actual[m]==tSet[m].out)  //When the desired output is right
+                n++;                    //it'll sum 
         }
-    }while(n!=trainSet);
+    }while(n!=trainSet);    //It'll stop when the sum is equal to the train Set
     
     for(j=0;j<testSet;j++)
     {
-        val=w[0]+w[1]*data[j].in1+w[2]*data[j].in2;
+        val=w[0]+w[1]*data[j].in1+w[2]*data[j].in2; //Evaluating the inputs
         if(val>=0)
-            res='1';
+            res=1;  //If its positive the output is 1
         else
-            res='0';
-        printf("%c\n",res);
+            res=0;  //If its negative the output is 0
+        printf("%i\n",res);
     }
     
+    //printf("%.3f %.3f %.3f\n",w[0],w[1],w[2]);
+    
     return 0;
-}
 
+}
