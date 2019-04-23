@@ -90,7 +90,7 @@ int main(void){
     }
     
     for(j=0;j<3;j++)
-        w[j]=weight[rand()%11]; //Initialize randomly the value of the weights
+        w[j]=weight[rand()%10]; //Initialize randomly the value of the weights
     
     net=0;
     err=0;
