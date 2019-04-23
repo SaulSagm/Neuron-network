@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <math.h>
 
 struct train    //Structure for the training Set with its bias, two inputs and
 {               //the output desired
@@ -21,7 +20,7 @@ int main(void){
     srand(time(NULL));  //Random initialization
     int dim,trainSet,testSet;   //Input variables
     int a=0;
-    int i=0,j=0,k=0,m=0,n=0,res,epoch,limit;    //Counters
+    int i=0,j=0,k=0,m=0,n=0,res,epoch;    //Counters
     float weight[]={0.56,0.23,0.34,0.66,0.82,0.15,0.29,0.78,0.43,0.91},w[3];    //Weights
     float net,actual[100],err,val;  //Variables for calculations
     char str1[35];
@@ -33,9 +32,7 @@ int main(void){
     scanf("%i",&trainSet);
     fflush(stdin);
     scanf("%i",&testSet);
-    
-    limit=pow(trainSet,trainSet);
-    
+       
     fflush(stdin);
     while(i<trainSet)
     {
@@ -121,9 +118,9 @@ int main(void){
                 n++;                    //it'll sum 
         }
         epoch++;
-    }while(n!=trainSet && epoch!=limit);    //It'll stop when the sum is equal to the train Set orwhen it had
+    }while(n!=trainSet && epoch!=250);    //It'll stop when the sum is equal to the train Set orwhen it had
                                                           //reached a certain number of repetition so it won't be trapped
-    if(epoch==limit && n!=trainSet)         //in an infinite loop
+    if(epoch==250 && n!=trainSet)         //in an infinite loop
     {
         printf("no solution found\n");
     }
