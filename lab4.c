@@ -118,7 +118,7 @@ int main(void){
                 n++;                    //it'll sum 
         }
         epoch++;
-    }while(n!=trainSet && epoch<=300);    //It'll stop when the sum is equal to the train Set orwhen it had
+    }while(n!=trainSet && epoch<=250);    //It'll stop when the sum is equal to the train Set orwhen it had
                                                               //reached a certain number of repetition so it won't be trapped
     if(epoch>=300 && n!=trainSet)         //in an infinite loop
     {
