@@ -119,23 +119,24 @@ int main(void){
         }
         epoch++;
     }while(n!=trainSet && epoch!=250);    //It'll stop when the sum is equal to the train Set orwhen it had
-                                                          //reached a certain number of repetition so it won't be trapped
-    if(epoch==250 || n!=trainSet)         //in an infinite loop
+                                          //reached a certain number of repetition so it won't be trapped
+    if(epoch==250)                        //in an infinite loop
     {
         printf("no solution found\n");
     }
     else
-    {
-        for(j=0;j<testSet;j++)
+        if(n==trainSet)
         {
-            val=w[0]+w[1]*data[j].in1+w[2]*data[j].in2; //Evaluating the inputs
-            if(val>=0)
-                res=1;  //If its positive the output is 1
-            else
-                res=0;  //If its negative the output is 0
-            printf("%i\n",res);
+            for(j=0;j<testSet;j++)
+            {
+                val=w[0]+w[1]*data[j].in1+w[2]*data[j].in2; //Evaluating the inputs
+                if(val>=0)
+                    res=1;  //If its positive the output is 1
+                else
+                    res=0;  //If its negative the output is 0
+                printf("%i\n",res);
+            }
         }
-    }
     //printf("%.3f %.3f %.3f\n",w[0],w[1],w[2]);
     
     return 0;
