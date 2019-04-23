@@ -120,7 +120,7 @@ int main(void){
         epoch++;
     }while(epoch!=200);    //It'll stop when the sum is equal to the train Set orwhen it had
                                                               //reached a certain number of repetition so it won't be trapped
-    if(n!=trainSet)         //in an infinite loop
+    if(n!=trainSet || epoch==200)         //in an infinite loop
     {
         printf("no solution found\n");
     }
