@@ -136,7 +136,7 @@ int main(void){
             printf("%i\n",res);
         }
     }
-    printf("%.3f %.3f %.3f\n",w[0],w[1],w[2]);
+    //printf("%.3f %.3f %.3f\n",w[0],w[1],w[2]);
     
     return 0;
 
