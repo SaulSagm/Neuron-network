@@ -20,7 +20,7 @@ int main(void){
     srand(time(NULL));  //Random initialization
     int dim,trainSet,testSet;   //Input variables
     int a=0;
-    int i=0,j=0,k=0,m=0,n=0,res;    //Counters
+    int i=0,j=0,k=0,m=0,n=0,res,epoch;    //Counters
     float weight[]={0.56,0.23,0.34,0.66,0.82,0.15,0.29,0.78,0.43,0.91},w[3];    //Weights
     float net,actual[100],err,val;  //Variables for calculations
     char str1[35];
@@ -94,6 +94,7 @@ int main(void){
     
     net=0;
     err=0;
+    epoch=0;
     
     do  //Training function
     {
@@ -116,18 +117,25 @@ int main(void){
             if(actual[m]==tSet[m].out)  //When the desired output is right
                 n++;                    //it'll sum 
         }
-    }while(n!=trainSet);    //It'll stop when the sum is equal to the train Set
+        epoch++;
+    }while(n!=trainSet && epoch>=(trainSet^trainSet));    //It'll stop when the sum is equal to the train Set
     
-    for(j=0;j<testSet;j++)
+    if(epoch>=(trainSet^trainSet))
     {
-        val=w[0]+w[1]*data[j].in1+w[2]*data[j].in2; //Evaluating the inputs
-        if(val>=0)
-            res=1;  //If its positive the output is 1
-        else
-            res=0;  //If its negative the output is 0
-        printf("%i\n",res);
+        printf("No solution found\n");
     }
-    
+    else
+    {
+        for(j=0;j<testSet;j++)
+        {
+            val=w[0]+w[1]*data[j].in1+w[2]*data[j].in2; //Evaluating the inputs
+            if(val>=0)
+                res=1;  //If its positive the output is 1
+            else
+                res=0;  //If its negative the output is 0
+            printf("%i\n",res);
+        }
+    }
     //printf("%.3f %.3f %.3f\n",w[0],w[1],w[2]);
     
     return 0;
