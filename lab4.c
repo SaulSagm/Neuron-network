@@ -118,9 +118,9 @@ int main(void){
                 n++;                    //it'll sum 
         }
         epoch++;
-    }while(n!=trainSet && epoch!=50);    //It'll stop when the sum is equal to the train Set orwhen it had
+    }while(n!=trainSet && epoch!=300);    //It'll stop when the sum is equal to the train Set orwhen it had
                                           //reached a certain number of repetition so it won't be trapped
-    if(epoch==50)                        //in an infinite loop
+    if(epoch==300)                        //in an infinite loop
     {
         printf("no solution found\n");
     }
