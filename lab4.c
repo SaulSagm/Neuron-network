@@ -120,7 +120,7 @@ int main(void){
         epoch++;
     }while(n!=trainSet && epoch<=(trainSet^trainSet));    //It'll stop when the sum is equal to the train Set
     
-    if(epoch>=(trainSet^trainSet))
+    if(epoch>=(trainSet^trainSet) && n!=trainSet)
     {
         printf("no solution found\n");
     }
