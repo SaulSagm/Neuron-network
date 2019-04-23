@@ -118,9 +118,9 @@ int main(void){
                 n++;                    //it'll sum 
         }
         epoch++;
-    }while(n!=trainSet && epoch>=(trainSet^10));    //It'll stop when the sum is equal to the train Set
+    }while(n!=trainSet && epoch>=(trainSet^5));    //It'll stop when the sum is equal to the train Set
     
-    if(epoch>=(trainSet^10))
+    if(epoch>=(trainSet^5))
     {
         printf("no solution found\n");
     }
